@@ -22,7 +22,6 @@ export default function Services() {
             {services.map(({ title, description, icon: Icon }, i) => (
               <article className="service-card" key={title} data-reveal>
                 <div className="service-card-media" aria-hidden="true">
-                  <Icon className="service-card-watermark" strokeWidth={1.25} />
                   <span className="service-card-chip"><Icon size={26} /></span>
                   <span className="service-card-index">{String(i + 1).padStart(2, '0')}</span>
                 </div>

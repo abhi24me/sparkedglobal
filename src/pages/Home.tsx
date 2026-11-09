@@ -84,13 +84,15 @@ export default function Home() {
             aside={<Link to="/services" className="link-arrow">View all services <ArrowRight size={16} aria-hidden="true" /></Link>}
           />
           <div className="bento">
-            {featuredServices.map(({ title, icon: Icon }, i) => (
+            {featuredServices.map(({ title, description, icon: Icon }, i) => (
               <Link to="/services" className={`bento-card bento-card--${i + 1}`} key={title} data-reveal>
-                <Icon className="bento-card-watermark" aria-hidden="true" strokeWidth={1.25} />
-                <span className="bento-card-chip" aria-hidden="true"><Icon size={24} /></span>
+                <div className="bento-card-top" aria-hidden="true">
+                  <span className="bento-card-chip"><Icon size={30} strokeWidth={1.75} /></span>
+                  <span className="bento-card-icon"><ArrowUpRight size={18} /></span>
+                </div>
                 <div className="bento-card-body">
                   <h3>{title}</h3>
-                  <span className="bento-card-icon" aria-hidden="true"><ArrowUpRight size={18} /></span>
+                  <p>{description}</p>
                 </div>
               </Link>
             ))}

@@ -1,19 +1,19 @@
 /* ===== Design tokens ===== */
 :root {
   /* Brand */
-  --brand: #009688;
-  --brand-600: #00796b;
-  --brand-300: #4db6ac;
-  --brand-50: #e7f5f3;
+  --brand: #1d4ed8;
+  --brand-600: #1e3a8a;
+  --brand-300: #60a5fa;
+  --brand-50: #eef3fd;
 
   /* Ink & neutrals */
-  --ink: #1f2a33;
-  --ink-deep: #121a20;
-  --text: #33414c;
-  --text-muted: #63717c;
-  --line: #e3e8eb;
+  --ink: #0f1e36;
+  --ink-deep: #0a1426;
+  --text: #334155;
+  --text-muted: #5b6b80;
+  --line: #e2e8f0;
   --surface: #ffffff;
-  --surface-alt: #f4f7f7;
+  --surface-alt: #f5f7fb;
 
   /* Type */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -23,9 +23,9 @@
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-pill: 999px;
-  --shadow-sm: 0 1px 2px rgba(18, 26, 32, 0.06);
-  --shadow-md: 0 8px 24px -8px rgba(18, 26, 32, 0.14);
-  --shadow-lg: 0 24px 60px -20px rgba(18, 26, 32, 0.28);
+  --shadow-sm: 0 1px 2px rgba(10, 20, 38, 0.06);
+  --shadow-md: 0 8px 24px -8px rgba(10, 20, 38, 0.14);
+  --shadow-lg: 0 24px 60px -20px rgba(10, 20, 38, 0.28);
 
   /* Layout */
   --container: 1200px;

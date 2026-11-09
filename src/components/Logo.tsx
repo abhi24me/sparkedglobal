@@ -7,9 +7,9 @@ type LogoProps = {
 
 export default function Logo({ variant = 'light', size = 48 }: LogoProps) {
   const isDark = variant === 'dark'
-  const badge = isDark ? '#009688' : '#1F2A33'
-  const spark = isDark ? '#ffffff' : '#009688'
-  const smallSpark = isDark ? '#1F2A33' : '#ffffff'
+  const badge = isDark ? '#1d4ed8' : '#0f1e36'
+  const spark = isDark ? '#ffffff' : '#1d4ed8'
+  const smallSpark = isDark ? '#0f1e36' : '#ffffff'
   const scale = size / 48
 
   return (
@@ -24,10 +24,10 @@ export default function Logo({ variant = 'light', size = 48 }: LogoProps) {
         <path d="M45 13 Q45 19 51 19 Q45 19 45 25 Q45 19 39 19 Q45 19 45 13Z" fill={smallSpark} />
       </svg>
       <span aria-hidden="true" style={{ display: 'flex', flexDirection: 'column', fontFamily: "'Inter', system-ui, sans-serif" }}>
-        <span style={{ fontWeight: 800, fontSize: `${24 * scale}px`, letterSpacing: '-0.5px', color: isDark ? '#ffffff' : '#1F2A33' }}>
+        <span style={{ fontWeight: 800, fontSize: `${24 * scale}px`, letterSpacing: '-0.5px', color: isDark ? '#ffffff' : '#0f1e36' }}>
           Sparked
         </span>
-        <span style={{ fontWeight: 600, fontSize: `${10.5 * scale}px`, letterSpacing: `${5.2 * scale}px`, marginTop: `${5 * scale}px`, color: isDark ? '#4db6ac' : '#009688' }}>
+        <span style={{ fontWeight: 600, fontSize: `${10.5 * scale}px`, letterSpacing: `${5.2 * scale}px`, marginTop: `${5 * scale}px`, color: isDark ? '#60a5fa' : '#1d4ed8' }}>
           GLOBAL
         </span>
       </span>

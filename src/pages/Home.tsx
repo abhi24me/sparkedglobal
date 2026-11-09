@@ -61,9 +61,9 @@ export default function Home() {
               </svg>
               <div className="hub-core">
                 <svg viewBox="4 4 56 56">
-                  <rect x="4" y="4" width="56" height="56" rx="14" fill="#009688" />
+                  <rect x="4" y="4" width="56" height="56" rx="14" fill="#1d4ed8" />
                   <path d="M32 13 Q32 32 51 32 Q32 32 32 51 Q32 32 13 32 Q32 32 32 13Z" fill="#fff" />
-                  <path d="M45 13 Q45 19 51 19 Q45 19 45 25 Q45 19 39 19 Q45 19 45 13Z" fill="#1F2A33" />
+                  <path d="M45 13 Q45 19 51 19 Q45 19 45 25 Q45 19 39 19 Q45 19 45 13Z" fill="#0f1e36" />
                 </svg>
               </div>
               {hubNodes.map(({ x, y, icon: Icon }, i) => (

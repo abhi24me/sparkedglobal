@@ -17,11 +17,11 @@ export default function Contact() {
           </div>
 
           <div className="contact-cards">
-            <a href="mailto:info@arkelon.com" className="contact-card contact-card--link" data-reveal>
+            <a href="mailto:business@sparkedglobal.com" className="contact-card contact-card--link" data-reveal>
               <span className="contact-card-icon" aria-hidden="true"><Mail size={22} /></span>
               <div>
                 <strong>Email</strong>
-                <p>info@arkelon.com</p>
+                <p>business@sparkedglobal.com</p>
               </div>
               <ArrowUpRight size={20} className="contact-card-arrow" aria-hidden="true" />
             </a>
@@ -37,8 +37,13 @@ export default function Contact() {
             <div className="contact-card" data-reveal>
               <span className="contact-card-icon" aria-hidden="true"><MapPin size={22} /></span>
               <div>
-                <strong>Address 1</strong>
-                <p>2nd floor, AOJ House, 2818, 6th Cross, 19th Main, HAL II stage, Bengaluru - 560008, Karnataka, India</p>
+                <strong>Address</strong>
+                <p>
+                  CWIP0196<br />
+                  Compass building - Al Hulaila,<br />
+                  Al Hulaila Industrial Zone - FZ,<br />
+                  Ras Al Khaimah, United Arab Emirates
+                </p>
               </div>
             </div>
           </div>

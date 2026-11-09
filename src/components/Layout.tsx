@@ -125,8 +125,8 @@ export default function Layout() {
             </div>
             <div className="footer-col">
               <h4>Contact</h4>
-              <a href="mailto:info@arkelon.com" className="footer-mail">
-                <Mail size={16} aria-hidden="true" /> info@arkelon.com
+              <a href="mailto:business@sparkedglobal.com" className="footer-mail">
+                <Mail size={16} aria-hidden="true" /> business@sparkedglobal.com
               </a>
             </div>
           </div>

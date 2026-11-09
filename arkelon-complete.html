@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Arkelon — Premium Diesel Exhaust Fluid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+
+/* ── DESIGN TOKENS ─────────────────────────────────────────── */
+:root {
+  --c:       #1A1F24;   /* charcoal deep */
+  --c-mid:   #252B32;   /* charcoal mid */
+  --c-soft:  #323940;   /* charcoal soft */
+  --c-edge:  #3E464F;   /* charcoal edge */
+  --teal:    #25B99A;   /* brand teal */
+  --teal-dk: #1A9A80;
+  --teal-x:  rgba(37,185,154,0.10);
+  --teal-b:  rgba(37,185,154,0.28);
+  --silver:  #B4C0CA;
+  --silver-l:#D8E0E6;
+  --white:   #FFFFFF;
+  --body:    #D4DCE3;
+  --muted:   #7E8E9A;
+  --b0:      rgba(180,192,202,0.12);
+  --b1:      rgba(180,192,202,0.24);
+  --b2:      rgba(180,192,202,0.38);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--c);color:var(--body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{display:block;width:100%;height:100%;object-fit:cover;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+/* ── PAGES ─────────────────────────────────────────────────── */
+.pg{display:none;}
+.pg.on{display:block;}
+
+/* ── NAV ────────────────────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(26,31,36,0.97);
+  backdrop-filter:blur(14px);
+  border-bottom:0.5px solid var(--b0);
+}
+.nav-r{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:24px;font-weight:800;letter-spacing:0.07em;
+  color:var(--white);text-transform:uppercase;cursor:pointer;
+  display:flex;align-items:baseline;gap:0;
+}
+.logo-on{color:var(--teal);}
+.logo-def{
+  font-size:9px;font-weight:600;letter-spacing:0.16em;
+  color:var(--silver);font-family:'Inter',sans-serif;
+  margin-left:5px;align-self:flex-start;margin-top:4px;
+}
+.nav-menu{display:flex;align-items:center;gap:2px;list-style:none;}
+.nav-menu button{
+  font-size:11px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;
+  color:var(--muted);background:none;border:none;cursor:pointer;
+  padding:7px 13px;border-radius:4px;transition:color .18s,background .18s;
+}
+.nav-menu button:hover{color:var(--white);background:var(--b0);}
+.nav-menu button.cur{color:var(--teal);}
+.nav-qa{
+  background:var(--teal);color:var(--c);
+  font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  padding:8px 18px;border-radius:4px;border:none;cursor:pointer;
+  transition:background .18s;white-space:nowrap;
+}
+.nav-qa:hover{background:var(--teal-dk);color:var(--white);}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  padding:12px 26px;border-radius:4px;border:none;cursor:pointer;transition:.18s;
+}
+.btn-p{background:var(--teal);color:var(--c);}
+.btn-p:hover{background:var(--teal-dk);color:var(--white);}
+.btn-g{background:transparent;color:var(--silver-l);border:0.5px solid var(--b1);}
+.btn-g:hover{border-color:var(--silver);color:var(--white);}
+.btns{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* ── IMAGE PLACEHOLDERS ─────────────────────────────────────── */
+/* Developer note: replace .img-slot with real <img> tags */
+.img-slot{
+  background:var(--c-soft);
+  border:1px dashed var(--b1);
+  border-radius:6px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:8px;color:var(--muted);font-size:12px;
+  font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  text-align:center;padding:16px;
+}
+.img-slot::before{
+  content:'📷';font-size:28px;display:block;
+  filter:grayscale(1);opacity:0.5;
+}
+.img-slot span{font-size:11px;color:var(--c-edge);font-style:italic;text-transform:none;letter-spacing:0;}
+
+/* ── PAGE BANNER ────────────────────────────────────────────── */
+.banner{
+  background:var(--c-mid);
+  border-bottom:0.5px solid var(--b0);
+  padding:60px 0 48px;
+}
+.bc{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.bc em{color:var(--teal);font-style:normal;}
+.banner h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(36px,5vw,58px);font-weight:800;
+  text-transform:uppercase;color:var(--white);
+  line-height:1.0;letter-spacing:-0.01em;margin-bottom:14px;
+}
+.banner h1 em{font-style:normal;color:var(--teal);}
+.banner p{font-size:14px;color:var(--muted);max-width:540px;line-height:1.75;}
+
+/* ── SECTION ATOMS ──────────────────────────────────────────── */
+.sec{padding:72px 0;}
+.sec-alt{background:var(--c-mid);border-top:0.5px solid var(--b0);border-bottom:0.5px solid var(--b0);}
+.ey{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.ey::before{content:'';display:inline-block;width:16px;height:1.5px;background:var(--teal);}
+.sh{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(28px,3.6vw,42px);font-weight:800;
+  text-transform:uppercase;color:var(--white);
+  line-height:1.02;margin-bottom:10px;
+}
+.sb{font-size:13px;color:var(--muted);max-width:520px;line-height:1.75;margin-bottom:32px;}
+.div{height:0.5px;background:var(--b0);}
+
+/* ── TAB STRIP ──────────────────────────────────────────────── */
+.tabs{
+  background:var(--c-mid);
+  border-bottom:0.5px solid var(--b0);
+  display:flex;overflow-x:auto;
+}
+.tab{
+  padding:12px 22px;font-size:11px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);background:none;border:none;cursor:pointer;
+  border-bottom:2px solid transparent;transition:.18s;white-space:nowrap;
+}
+.tab:hover{color:var(--silver-l);}
+.tab.cur{color:var(--teal);border-bottom-color:var(--teal);}
+
+
+/* ══════════════════════════════════════════════════════════════
+   HOME PAGE
+══════════════════════════════════════════════════════════════ */
+
+/* hero */
+.hero{
+  position:relative;overflow:hidden;
+  background:var(--c);padding:0;
+  border-bottom:0.5px solid var(--b0);
+}
+.hero-img{
+  width:100%;height:520px;
+  position:relative;
+}
+.hero-img .img-slot{height:100%;border-radius:0;border:none;border-bottom:0.5px dashed var(--b1);}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(26,31,36,0.92) 0%,rgba(26,31,36,0.55) 55%,rgba(26,31,36,0.15) 100%);
+  display:flex;align-items:center;
+}
+.hero-copy{padding:0 32px;max-width:600px;}
+.hero-ey{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-ey::before{content:'';display:inline-block;width:20px;height:1.5px;background:var(--teal);}
+.hero h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(42px,5.5vw,66px);font-weight:800;
+  color:var(--white);line-height:1.0;
+  text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:18px;
+}
+.hero h1 em{font-style:normal;color:var(--teal);}
+.hero-sub{font-size:14px;color:var(--silver);line-height:1.7;max-width:440px;margin-bottom:30px;}
+.hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px;}
+.hbadge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(37,185,154,0.10);
+  border:0.5px solid rgba(37,185,154,0.28);
+  border-radius:3px;padding:5px 11px;
+  font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);
+}
+.sbadge{
+  background:rgba(180,192,202,0.10);
+  border:0.5px solid var(--b1);
+  color:var(--silver-l);
+}
+
+/* trust strip */
+.trust{background:var(--c-soft);border-bottom:0.5px solid var(--b0);padding:0;}
+.trust-inner{display:flex;justify-content:space-around;flex-wrap:wrap;}
+.ti{
+  display:flex;align-items:center;gap:9px;
+  padding:14px 16px;font-size:12px;font-weight:500;color:var(--silver);
+}
+.td{width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+
+/* home usp */
+.usp-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:40px;}
+.usp-c{
+  background:var(--c-mid);border:0.5px solid var(--b0);border-radius:6px;
+  padding:28px 22px;transition:border-color .2s;
+}
+.usp-c:hover{border-color:var(--teal-b);}
+.usp-icon{
+  width:38px;height:38px;border-radius:8px;
+  background:var(--teal-x);border:0.5px solid var(--teal-b);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;margin-bottom:14px;
+}
+.usp-t{font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.usp-d{font-size:12px;color:var(--muted);line-height:1.65;}
+
+/* product strip */
+.prod-strip{
+  background:var(--c);
+  border-top:0.5px solid var(--b0);
+  border-bottom:0.5px solid var(--b0);
+  padding:56px 0;
+}
+.prod-layout{display:grid;grid-template-columns:1fr 360px;gap:56px;align-items:start;}
+.prod-img-wrap{
+  border-radius:8px;overflow:hidden;
+  border:0.5px solid var(--b1);
+}
+.prod-img-wrap .img-slot{height:280px;border-radius:0;border:none;}
+.prod-caption{font-size:11px;color:var(--muted);padding:10px 14px;background:var(--c-mid);border-top:0.5px solid var(--b0);}
+
+/* spec mini panel */
+.spec-mini{background:var(--c-mid);border:0.5px solid var(--b1);border-radius:8px;overflow:hidden;}
+.spec-mini-hd{
+  background:var(--c-soft);padding:14px 18px;
+  border-bottom:0.5px solid var(--b0);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.smt{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.04em;}
+.de{background:var(--c);border:0.5px solid var(--teal-b);border-radius:3px;padding:3px 9px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);}
+.sr{display:flex;justify-content:space-between;padding:10px 18px;font-size:12px;border-top:0.5px solid var(--b0);}
+.sr:first-child{border-top:none;}
+.sr .p{color:var(--muted);}
+.sr .v{color:var(--white);font-weight:500;}
+.sr .v.t{color:var(--teal);}
+.pack-ft{padding:12px 18px;background:var(--c-soft);border-top:0.5px solid var(--b0);}
+.pk-lbl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.pks{display:flex;gap:6px;flex-wrap:wrap;}
+.pk{background:var(--c);border:0.5px solid var(--b1);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--silver);}
+
+/* industries home */
+.ind-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:36px;}
+.ind-c{
+  background:var(--c-mid);border:0.5px solid var(--b0);border-radius:6px;
+  padding:20px 14px;text-align:center;transition:border-color .2s,background .2s;
+}
+.ind-c:hover{background:var(--c-soft);border-color:var(--teal-b);}
+.ind-ico{font-size:26px;margin-bottom:8px;}
+.ind-lbl{font-size:12px;font-weight:500;color:var(--silver-l);line-height:1.4;}
+
+/* order section */
+.order-g{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px;align-items:start;}
+.steps{display:flex;flex-direction:column;}
+.step{display:flex;gap:18px;align-items:flex-start;padding-bottom:24px;}
+.step:last-child{padding-bottom:0;}
+.step-l{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.step-n{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--c-soft);border:0.5px solid var(--teal);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--teal);
+}
+.step-line{width:1px;flex:1;background:var(--b0);margin-top:5px;min-height:24px;}
+.step:last-child .step-line{display:none;}
+.step-t{font-size:14px;font-weight:600;color:var(--white);margin-bottom:3px;padding-top:5px;}
+.step-d{font-size:12px;color:var(--muted);line-height:1.6;}
+
+/* enquiry form */
+.form-box{background:var(--c-mid);border:0.5px solid var(--b1);border-radius:8px;padding:26px;}
+.form-tt{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin-bottom:18px;}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+.fg label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.fg input,.fg select,.fg textarea{
+  background:var(--c-soft);border:0.5px solid var(--b1);border-radius:4px;
+  padding:9px 13px;font-size:13px;color:var(--body);
+  outline:none;font-family:'Inter',sans-serif;transition:border-color .18s;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--muted);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--teal-b);}
+.fg select option{background:var(--c-soft);}
+.fg textarea{resize:vertical;min-height:72px;}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.fsub{
+  width:100%;background:var(--teal);color:var(--c);
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:12px;border:none;border-radius:4px;cursor:pointer;margin-top:4px;
+  transition:.18s;
+}
+.fsub:hover{background:var(--teal-dk);color:var(--white);}
+.fwa{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;margin-top:8px;background:transparent;
+  border:0.5px solid rgba(37,211,102,0.3);border-radius:4px;padding:10px;
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:500;
+  color:#25D366;cursor:pointer;transition:.18s;
+}
+.fwa:hover{background:rgba(37,211,102,0.07);}
+
+/* CTA band */
+.cta-band{background:var(--c-soft);border-top:0.5px solid var(--b0);border-bottom:0.5px solid var(--b0);padding:56px 0;text-align:center;}
+.cta-band h2{font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:800;text-transform:uppercase;color:var(--white);margin-bottom:10px;}
+.cta-band p{font-size:13px;color:var(--muted);margin-bottom:22px;}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+
+
+/* ══════════════════════════════════════════════════════════════
+   WHY US PAGE
+══════════════════════════════════════════════════════════════ */
+
+.why-img-banner{width:100%;height:320px;position:relative;overflow:hidden;border-bottom:0.5px solid var(--b0);}
+.why-img-banner .img-slot{height:100%;border-radius:0;border:none;}
+
+.usp-full{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b0);border:0.5px solid var(--b0);border-radius:8px;overflow:hidden;margin-top:40px;}
+.ub{background:var(--c-mid);padding:32px 28px;transition:background .2s;}
+.ub:hover{background:var(--c-soft);}
+.ub-acc{display:block;width:24px;height:2px;background:var(--teal);margin-bottom:14px;}
+.ub-t{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.ub-d{font-size:13px;color:var(--muted);line-height:1.72;}
+.ub-d strong{color:var(--silver-l);font-weight:500;}
+
+.cmp-t{width:100%;border-collapse:collapse;margin-top:36px;}
+.cmp-t th{padding:12px 18px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.cmp-t th:first-child{text-align:left;color:var(--muted);width:36%;}
+.cmp-t th:nth-child(2){background:var(--c-soft);color:var(--silver);text-align:center;}
+.cmp-t th:nth-child(3){background:var(--teal-x);color:var(--teal);text-align:center;border-top:2px solid var(--teal);}
+.cmp-t td{padding:11px 18px;font-size:12px;border-top:0.5px solid var(--b0);}
+.cmp-t td:first-child{color:var(--muted);}
+.cmp-t td:nth-child(2){background:var(--c-soft);text-align:center;color:var(--silver);}
+.cmp-t td:nth-child(3){background:rgba(37,185,154,0.04);text-align:center;color:var(--teal);font-weight:500;}
+.ck{color:var(--teal);}
+.cx{color:rgba(220,80,80,0.7);}
+.cm{color:var(--silver);font-size:11px;}
+
+.cert-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:36px;}
+.cert-c{background:var(--c-mid);border:0.5px solid var(--b0);border-radius:6px;padding:22px 18px;text-align:center;}
+.cert-ico{font-size:30px;margin-bottom:10px;}
+.cert-n{font-size:14px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.cert-d{font-size:11px;color:var(--muted);line-height:1.6;}
+
+
+/* ══════════════════════════════════════════════════════════════
+   PRODUCT PAGE
+══════════════════════════════════════════════════════════════ */
+
+.prod-hero-img{width:100%;height:340px;overflow:hidden;border-bottom:0.5px solid var(--b0);}
+.prod-hero-img .img-slot{height:100%;border-radius:0;border:none;}
+
+.prod-2col{display:grid;grid-template-columns:1fr 380px;gap:52px;margin-top:40px;align-items:start;}
+.prod-txt{font-size:13px;color:var(--muted);line-height:1.8;}
+.prod-txt p+p{margin-top:14px;}
+.prod-txt strong{color:var(--silver-l);font-weight:500;}
+.prod-txt .hl{
+  border-left:2px solid var(--teal);padding-left:16px;
+  margin:18px 0;font-size:13px;color:var(--silver-l);line-height:1.65;
+}
+
+.spec-full{background:var(--c-mid);border:0.5px solid var(--b1);border-radius:8px;overflow:hidden;}
+.spec-full-hd{background:var(--c-soft);padding:15px 20px;border-bottom:0.5px solid var(--b0);display:flex;justify-content:space-between;align-items:center;}
+.sf-t{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.04em;}
+.spec-row{display:flex;justify-content:space-between;padding:10px 20px;font-size:12px;border-top:0.5px solid var(--b0);}
+.spec-row:first-child{border-top:none;}
+.spec-row .p{color:var(--muted);}
+.spec-row .v{color:var(--white);font-weight:500;}
+.spec-row .v.t{color:var(--teal);}
+.spec-pf{background:var(--c-soft);border-top:0.5px solid var(--b0);padding:13px 20px;}
+.sp-lbl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.sp-pks{display:flex;gap:6px;flex-wrap:wrap;}
+.sp-pk{background:var(--c);border:0.5px solid var(--b1);border-radius:3px;padding:4px 11px;font-size:11px;font-weight:500;color:var(--silver);}
+
+/* SCR flow */
+.scr-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:40px;position:relative;}
+.scr-flow::before{
+  content:'';position:absolute;top:26px;left:26px;right:26px;height:1px;
+  background:var(--teal-b);z-index:0;
+}
+.scr-s{text-align:center;position:relative;z-index:1;padding:0 8px;}
+.scr-ico{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--c-mid);border:1px solid var(--teal-b);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 10px;font-size:20px;
+}
+.scr-lbl{font-size:12px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.scr-d{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* storage */
+.stor-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:36px;}
+.stor-c{background:var(--c);border:0.5px solid var(--b0);border-radius:6px;padding:20px 18px;}
+.stor-ico{font-size:24px;margin-bottom:8px;}
+.stor-t{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.stor-d{font-size:11px;color:var(--muted);line-height:1.6;}
+
+/* docs */
+.doc-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:36px;}
+.doc-c{background:var(--c-mid);border:0.5px solid var(--b0);border-radius:6px;padding:20px 18px;cursor:pointer;transition:border-color .2s;display:flex;flex-direction:column;gap:7px;}
+.doc-c:hover{border-color:var(--teal-b);}
+.doc-ico{font-size:22px;}
+.doc-t{font-size:13px;font-weight:600;color:var(--white);}
+.doc-d{font-size:11px;color:var(--muted);line-height:1.55;flex:1;}
+.doc-l{font-size:11px;color:var(--teal);font-weight:600;}
+
+
+/* ══════════════════════════════════════════════════════════════
+   INDUSTRIES PAGE
+══════════════════════════════════════════════════════════════ */
+
+.ind-banner-img{width:100%;height:320px;overflow:hidden;border-bottom:0.5px solid var(--b0);}
+.ind-banner-img .img-slot{height:100%;border-radius:0;border:none;}
+
+.ind-cards{display:flex;flex-direction:column;gap:1px;background:var(--b0);border:0.5px solid var(--b0);border-radius:8px;overflow:hidden;margin-top:40px;}
+.ic{
+  background:var(--c-mid);
+  display:grid;grid-template-columns:280px 1fr;
+  gap:0;align-items:stretch;transition:background .2s;
+}
+.ic:hover{background:var(--c-soft);}
+.ic-img{overflow:hidden;border-right:0.5px solid var(--b0);}
+.ic-img .img-slot{height:100%;min-height:160px;border-radius:0;border:none;font-size:10px;}
+.ic-body{padding:24px 28px;}
+.ic-t{font-size:15px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.ic-d{font-size:12px;color:var(--muted);line-height:1.7;max-width:520px;}
+.ic-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.ic-tag{background:var(--teal-x);border:0.5px solid var(--teal-b);border-radius:3px;padding:2px 9px;font-size:10px;color:var(--teal);font-weight:600;letter-spacing:.04em;}
+
+/* mandate / timeline */
+.mandate-2{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:40px;align-items:start;}
+.mtxt{font-size:13px;color:var(--muted);line-height:1.8;}
+.mtxt p+p{margin-top:13px;}
+.mtxt strong{color:var(--silver-l);font-weight:500;}
+.tl{display:flex;flex-direction:column;}
+.tl-i{display:flex;gap:14px;align-items:flex-start;padding-bottom:18px;}
+.tl-i:last-child{padding-bottom:0;}
+.tl-l{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);border:2px solid var(--c-mid);flex-shrink:0;}
+.tl-ln{width:1px;flex:1;background:var(--b0);margin-top:3px;min-height:18px;}
+.tl-i:last-child .tl-ln{display:none;}
+.tl-yr{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--teal);margin-bottom:1px;}
+.tl-ev{font-size:12px;color:var(--muted);line-height:1.55;}
+.tl-ev strong{color:var(--silver-l);font-weight:500;}
+
+/* export */
+.exp-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:36px;}
+.exp-c{background:var(--c-mid);border:0.5px solid var(--b0);border-radius:6px;padding:22px 18px;}
+.exp-fl{font-size:28px;margin-bottom:8px;}
+.exp-cn{font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.st{display:inline-block;padding:2px 9px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;}
+.st-a{background:var(--teal-x);color:var(--teal);border:0.5px solid var(--teal-b);}
+.st-p{background:var(--b0);color:var(--silver);border:0.5px solid var(--b1);}
+.exp-d{font-size:11px;color:var(--muted);line-height:1.6;}
+
+
+/* ══════════════════════════════════════════════════════════════
+   ABOUT PAGE
+══════════════════════════════════════════════════════════════ */
+
+.about-2{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px;align-items:start;}
+.abt-body{font-size:13px;color:var(--muted);line-height:1.85;}
+.abt-body p+p{margin-top:14px;}
+.abt-body strong{color:var(--silver-l);font-weight:500;}
+
+.founder-img-wrap{
+  border-radius:8px;overflow:hidden;
+  border:0.5px solid var(--b1);margin-bottom:16px;
+}
+.founder-img-wrap .img-slot{height:260px;border-radius:0;border:none;}
+
+.vals-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:36px;}
+.val-c{background:var(--c);border:0.5px solid var(--b0);border-radius:6px;padding:24px 20px;}
+.val-ico{font-size:26px;margin-bottom:12px;}
+.val-t{font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.val-d{font-size:12px;color:var(--muted);line-height:1.65;}
+
+.road-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b0);border:0.5px solid var(--b0);border-radius:8px;overflow:hidden;margin-top:40px;}
+.road-ph{background:var(--c-mid);padding:26px 22px;}
+.road-ph.now{background:rgba(37,185,154,0.06);border-top:2px solid var(--teal);}
+.road-lb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.road-ph.now .road-lb{color:var(--teal);}
+.road-pr{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;color:var(--teal);margin-bottom:14px;}
+.road-li{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.road-li li{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--muted);line-height:1.5;}
+.road-li li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px;}
+.road-li li strong{color:var(--silver-l);font-weight:500;}
+
+.stats-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:32px;}
+.stat-b{background:var(--c-mid);border:0.5px solid var(--b0);border-radius:6px;padding:22px 18px;}
+.stat-v{font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:800;color:var(--teal);line-height:1;margin-bottom:5px;}
+.stat-l{font-size:11px;color:var(--muted);line-height:1.5;}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer{background:var(--c);border-top:0.5px solid var(--b0);padding:40px 0 24px;}
+.ft{display:grid;grid-template-columns:200px 1fr 1fr;gap:44px;padding-bottom:24px;border-bottom:0.5px solid var(--b0);margin-bottom:18px;}
+.fl{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;letter-spacing:.07em;color:var(--white);text-transform:uppercase;}
+.fl .on{color:var(--teal);}
+.fl .df{font-size:8px;font-weight:600;letter-spacing:.16em;color:var(--silver);font-family:'Inter',sans-serif;margin-left:4px;vertical-align:super;}
+.ft-tg{font-size:11px;color:var(--muted);margin-top:6px;font-style:italic;line-height:1.6;}
+.fc-t{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);margin-bottom:12px;}
+.fc-l{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.fc-l button{font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;text-align:left;transition:color .18s;}
+.fc-l button:hover{color:var(--teal);}
+.fb{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.fm{font-size:10px;color:var(--muted);line-height:1.8;}
+.flg{font-size:10px;color:var(--muted);}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:880px){
+  .hero-overlay{background:linear-gradient(180deg,rgba(26,31,36,0.88) 0%,rgba(26,31,36,0.6) 100%);}
+  .prod-layout{grid-template-columns:1fr;}
+  .prod-2col{grid-template-columns:1fr;}
+  .usp-full{grid-template-columns:1fr;}
+  .mandate-2{grid-template-columns:1fr;gap:32px;}
+  .about-2{grid-template-columns:1fr;gap:32px;}
+  .road-g{grid-template-columns:1fr;}
+  .order-g{grid-template-columns:1fr;gap:36px;}
+  .ic{grid-template-columns:1fr;}
+  .ic-img{min-height:180px;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .ft>:first-child{grid-column:1/-1;}
+  .scr-flow{grid-template-columns:1fr 1fr;}
+  .scr-flow::before{display:none;}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px;}
+  .sec{padding:52px 0;}
+  .banner{padding:44px 0 36px;}
+  .nav-menu{display:none;}
+  .ft{grid-template-columns:1fr;}
+  .fg2{grid-template-columns:1fr;}
+  .hero-img{height:400px;}
+  .ind-banner-img,.why-img-banner,.prod-hero-img{height:220px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <div class="nav-r">
+      <div class="logo" onclick="go('home')">
+        ARKEL<span class="logo-on">ON</span><span class="logo-def">DEF</span>
+      </div>
+      <ul class="nav-menu">
+        <li><button onclick="go('home')"       id="nb-home">Home</button></li>
+        <li><button onclick="go('why')"        id="nb-why">Why Us</button></li>
+        <li><button onclick="go('product')"    id="nb-product">Product</button></li>
+        <li><button onclick="go('industries')" id="nb-industries">Industries</button></li>
+        <li><button onclick="go('about')"      id="nb-about">About</button></li>
+      </ul>
+      <button class="nav-qa" onclick="go('home');setTimeout(()=>document.getElementById('order-sec').scrollIntoView({behavior:'smooth'}),200)">Get a Quote</button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     HOME
+══════════════════════════════════════════════════════════════ -->
+<div class="pg" id="pg-home">
+
+  <!-- HERO — full-width image with overlay copy -->
+  <div class="hero">
+    <div class="hero-img">
+      <div class="img-slot" style="height:520px">
+        IMAGE REQUIRED
+        <span>Wide shot of BS6 trucks on an Indian highway at dusk, OR a row of Arkelon IBC totes/drums in a clean warehouse. Landscape, high resolution. No people focus — vehicles or product.</span>
+      </div>
+      <div class="hero-overlay">
+        <div class="hero-copy">
+          <div class="hero-ey">ISO 22241 · IS 16282 · German Licensed</div>
+          <h1>Premium DEF.<br><em>The standard</em><br>your SCR requires.</h1>
+          <p class="hero-sub">German-licensed formulation. Manufactured at the same facility trusted by India's leading automotive OEMs. Consistent purity, every batch.</p>
+          <div class="btns">
+            <button class="btn btn-p" onclick="go('home');setTimeout(()=>document.getElementById('order-sec').scrollIntoView({behavior:'smooth'}),200)">Request a Quote</button>
+            <button class="btn btn-g" onclick="go('product')">View Specifications</button>
+          </div>
+          <div class="hero-badges">
+            <span class="hbadge">🇩🇪 German Licensed</span>
+            <span class="hbadge sbadge">ISO 22241</span>
+            <span class="hbadge sbadge">BIS IS 16282</span>
+            <span class="hbadge sbadge">OEM-Grade Source</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="trust">
+    <div class="wrap">
+      <div class="trust-inner">
+        <div class="ti"><div class="td"></div>AUS 32 Standard</div>
+        <div class="ti"><div class="td"></div>32.5% Urea Concentration</div>
+        <div class="ti"><div class="td"></div>Batch CoA Available</div>
+        <div class="ti"><div class="td"></div>German-Licensed Formula</div>
+        <div class="ti"><div class="td"></div>OEM-Grade Manufacturing</div>
+        <div class="ti"><div class="td"></div>5L to Bulk Supply</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY ARKELON — 4 cards -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ey">Why Arkelon</div>
+      <h2 class="sh">Not all DEF is the same.</h2>
+      <p class="sb">Your SCR system is only as reliable as the fluid going into it. Arkelon sources exclusively from a German-licensed, OEM-grade manufacturer — and backs every delivery with documentation.</p>
+      <div class="usp-g">
+        <div class="usp-c">
+          <div class="usp-icon">🇩🇪</div>
+          <div class="usp-t">German-Licensed Formulation</div>
+          <div class="usp-d">Formulated to VDA-grade specification — the standard demanded by European OEMs and the strictest purity benchmark in the global DEF industry.</div>
+        </div>
+        <div class="usp-c">
+          <div class="usp-icon">🏭</div>
+          <div class="usp-t">OEM-Trusted Manufacturer</div>
+          <div class="usp-d">Sourced from the same facility that produces DEF for India's leading automotive OEMs. The quality your fleet receives is manufactured to OEM procurement standards.</div>
+        </div>
+        <div class="usp-c">
+          <div class="usp-icon">🧾</div>
+          <div class="usp-t">Batch-Level Documentation</div>
+          <div class="usp-d">Every delivery is accompanied by a Certificate of Analysis for that specific batch. Available on request before you place your first order.</div>
+        </div>
+        <div class="usp-c">
+          <div class="usp-icon">📞</div>
+          <div class="usp-t">Direct Account Management</div>
+          <div class="usp-d">Every Arkelon customer has a named point of contact. Orders are handled personally, and any concern is resolved directly — not escalated through a support chain.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT STRIP -->
+  <div class="prod-strip">
+    <div class="wrap">
+      <div class="ey">Our Product</div>
+      <h2 class="sh">Arkelon AUS 32</h2>
+      <p class="sb">ISO 22241 and IS 16282 compliant. German-licensed. Available in six pack sizes from 5L through bulk IBC.</p>
+      <div class="prod-layout">
+        <div>
+          <div class="prod-img-wrap">
+            <div class="img-slot" style="height:260px">
+              IMAGE REQUIRED
+              <span>Product shot: Arkelon-branded 20L jerry can or 5L bottle against a clean dark/neutral background. Professional product photography — this is the most important single image on the site.</span>
+            </div>
+            <div class="prod-caption">Arkelon AUS 32 — available in 5L, 10L, 20L, 210L drum, 1000L IBC and bulk</div>
+          </div>
+          <div style="margin-top:14px">
+            <div class="img-slot" style="height:130px;border-radius:6px;border:1px dashed var(--b1)">
+              IMAGE REQUIRED
+              <span>Close-up of product label showing ISO 22241, BIS IS 16282 markings and German licence reference. Or the manufacturer's certification logo if permitted.</span>
+            </div>
+          </div>
+        </div>
+        <div class="spec-mini">
+          <div class="spec-mini-hd">
+            <span class="smt">Key Specifications</span>
+            <span class="de">🇩🇪 German Licensed</span>
+          </div>
+          <div class="sr"><span class="p">Urea concentration</span><span class="v t">32.5% ± 0.7%</span></div>
+          <div class="sr"><span class="p">Standard</span><span class="v">ISO 22241 / IS 16282</span></div>
+          <div class="sr"><span class="p">Base fluid</span><span class="v">Deionised water</span></div>
+          <div class="sr"><span class="p">pH at 20°C</span><span class="v">9.0 – 9.5</span></div>
+          <div class="sr"><span class="p">Density at 20°C</span><span class="v">1.087 – 1.093 g/cm³</span></div>
+          <div class="sr"><span class="p">Shelf life (sealed)</span><span class="v">18 months</span></div>
+          <div class="sr"><span class="p">BS6 compatible</span><span class="v t">Yes</span></div>
+          <div class="sr"><span class="p">CoA per batch</span><span class="v t">Available on request</span></div>
+          <div class="pack-ft">
+            <div class="pk-lbl">Pack sizes</div>
+            <div class="pks">
+              <span class="pk">5 L</span><span class="pk">10 L</span><span class="pk">20 L</span>
+              <span class="pk">210 L</span><span class="pk">1000 L IBC</span><span class="pk">Bulk</span>
+            </div>
+          </div>
+          <div style="padding:12px 18px">
+            <button class="btn btn-p" style="width:100%;justify-content:center" onclick="go('product')">Full Specifications →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDUSTRIES -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="ey">Industries Served</div>
+      <h2 class="sh">Built for the BS6 era.</h2>
+      <p class="sb">Every BS6 diesel vehicle with an SCR system requires DEF as a consumable. Arkelon supplies across all sectors.</p>
+      <div class="ind-g">
+        <div class="ind-c"><div class="ind-ico">🚛</div><div class="ind-lbl">Commercial Trucking & Logistics</div></div>
+        <div class="ind-c"><div class="ind-ico">🚌</div><div class="ind-lbl">Bus & Passenger Transport</div></div>
+        <div class="ind-c"><div class="ind-ico">🏗️</div><div class="ind-lbl">Construction & Mining</div></div>
+        <div class="ind-c"><div class="ind-ico">🚗</div><div class="ind-lbl">Automotive Dealerships</div></div>
+        <div class="ind-c"><div class="ind-ico">🔧</div><div class="ind-lbl">Vehicle Service Centres</div></div>
+        <div class="ind-c"><div class="ind-ico">🏭</div><div class="ind-lbl">Industrial Diesel Equipment</div></div>
+      </div>
+      <div style="margin-top:28px">
+        <button class="btn btn-g" onclick="go('industries')">View All Industries →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section class="sec" id="order-sec">
+    <div class="wrap">
+      <div class="ey">How to Order</div>
+      <h2 class="sh">Straightforward from the first call.</h2>
+      <p class="sb">No complex procurement process. Documentation is prepared and shared before you commit to anything.</p>
+      <div class="order-g">
+        <div class="steps">
+          <div class="step">
+            <div class="step-l"><div class="step-n">1</div><div class="step-line"></div></div>
+            <div><div class="step-t">Send your requirement</div><div class="step-d">Quantity, pack size, delivery location. No commitment required.</div></div>
+          </div>
+          <div class="step">
+            <div class="step-l"><div class="step-n">2</div><div class="step-line"></div></div>
+            <div><div class="step-t">Receive quote and CoA</div><div class="step-d">Pricing, delivery timeline, and the Certificate of Analysis for the current batch — before you pay.</div></div>
+          </div>
+          <div class="step">
+            <div class="step-l"><div class="step-n">3</div><div class="step-line"></div></div>
+            <div><div class="step-t">Confirm order</div><div class="step-d">Payment via NEFT/RTGS. Dispatch within 3–5 business days for first orders.</div></div>
+          </div>
+          <div class="step">
+            <div class="step-l"><div class="step-n">4</div></div>
+            <div><div class="step-t">Delivered with full documentation</div><div class="step-d">Tax invoice, MSDS, CoA, and transport documentation included with every delivery.</div></div>
+          </div>
+        </div>
+        <div class="form-box">
+          <div class="form-tt">Get a Quote</div>
+          <div class="fg2">
+            <div class="fg"><label>Name</label><input type="text" placeholder="Full name"/></div>
+            <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 XXXXX XXXXX"/></div>
+          </div>
+          <div class="fg"><label>Company / Fleet</label><input type="text" placeholder="Organisation name"/></div>
+          <div class="fg2">
+            <div class="fg"><label>Delivery Location</label><input type="text" placeholder="City / State"/></div>
+            <div class="fg">
+              <label>Monthly Volume</label>
+              <select>
+                <option value="">Select</option>
+                <option>Under 500 L</option>
+                <option>500 – 2,000 L</option>
+                <option>2,000 – 10,000 L</option>
+                <option>10,000+ L</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label>Notes</label><textarea placeholder="Preferred pack size, frequency, any specific requirements..."></textarea></div>
+          <button class="fsub">Send Enquiry →</button>
+          <button class="fwa">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp Us Directly
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <div class="cta-band">
+    <div class="wrap">
+      <h2>Ready to switch to verified quality?</h2>
+      <p>Request a sample Certificate of Analysis before placing your first order. That's where we start.</p>
+      <div class="cta-btns">
+        <button class="btn btn-p" onclick="go('why')">Why Arkelon →</button>
+        <button class="btn btn-g" onclick="go('product')">Full Product Specs</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /home -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     WHY US
+══════════════════════════════════════════════════════════════ -->
+<div class="pg" id="pg-why">
+
+  <div class="banner">
+    <div class="wrap">
+      <div class="bc">Arkelon <em>/ Why Arkelon</em></div>
+      <h1>The case for<br><em>doing it right.</em></h1>
+      <p>India's DEF market is crowded with undocumented, off-spec product. Fleet operators pay the price in SCR damage, warranty voids, and unplanned downtime. Arkelon was built around a different standard.</p>
+    </div>
+  </div>
+
+  <!-- Banner image -->
+  <div class="why-img-banner">
+    <div class="img-slot">
+      IMAGE REQUIRED
+      <span>Wide industrial image: a fleet of BS6 trucks at a depot, OR a quality lab setting with test equipment, OR an IBC tote fill line. Should convey scale and industrial reliability.</span>
+    </div>
+  </div>
+
+  <!-- MAIN USP BLOCKS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ey">The Arkelon Difference</div>
+      <h2 class="sh">Four reasons. All verifiable.</h2>
+      <p class="sb">Each of these is a specific, documented fact — not a marketing claim. You can ask us to prove every one of them before placing an order.</p>
+      <div class="usp-full">
+        <div class="ub">
+          <span class="ub-acc"></span>
+          <div class="ub-t">German-Licensed Formulation</div>
+          <div class="ub-d">Arkelon's product is manufactured under a <strong>German licence</strong> — aligned with VDA (Verband der Automobilindustrie) specification, the standard behind the AdBlue® trademark. This sets tighter trace metal limits than IS 16282 alone requires — specifically on copper and zinc, the metals most damaging to SCR injectors. It is a production process certification, not a label.</div>
+        </div>
+        <div class="ub">
+          <span class="ub-acc"></span>
+          <div class="ub-t">OEM-Trusted Manufacturing Source</div>
+          <div class="ub-d">Arkelon sources from the facility that <strong>white-labels DEF for India's leading automotive OEMs</strong>. OEM supply contracts require the highest level of quality auditing. The product reaching your fleet is produced to the same process standard, in the same facility, as branded OEM-supplied DEF — without the OEM price premium.</div>
+        </div>
+        <div class="ub">
+          <span class="ub-acc"></span>
+          <div class="ub-t">Full Batch Documentation</div>
+          <div class="ub-d">Every Arkelon delivery is backed by a <strong>Certificate of Analysis</strong> for the specific batch supplied. The CoA includes: urea concentration, pH, density, refractive index, biuret, aldehyde, and trace metal readings — tied to a lot number and production date. It is available on request <em>before you place your first order</em>. This is the difference between a claim and a proof.</div>
+        </div>
+        <div class="ub">
+          <span class="ub-acc"></span>
+          <div class="ub-t">Direct Account Responsibility</div>
+          <div class="ub-d">Every Arkelon customer has a <strong>named point of contact</strong> responsible for their account. Enquiries are answered personally. Documentation is prepared specifically for each order. If there is ever a quality concern, it is resolved directly — not passed through a distributor or a support tier. In industrial supply, this is not a soft benefit. It is a operational guarantee.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="ey">Side by Side</div>
+      <h2 class="sh">Arkelon vs. the alternatives.</h2>
+      <p class="sb">A direct comparison of what you get from different DEF supply sources in India's market.</p>
+      <table class="cmp-t">
+        <thead>
+          <tr>
+            <th>What to verify</th>
+            <th>Generic Indian Traders</th>
+            <th>Arkelon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>IS 16282 / ISO 22241 certification</td><td><span class="cm">Often claimed, rarely documented</span></td><td><span class="ck">✓ Documented per batch</span></td></tr>
+          <tr><td>German-licensed formulation</td><td><span class="cx">✗ Not available</span></td><td><span class="ck">✓ Yes</span></td></tr>
+          <tr><td>OEM-grade manufacturing source</td><td><span class="cx">✗ Unknown / unverified</span></td><td><span class="ck">✓ Same facility as OEM supply</span></td></tr>
+          <tr><td>Certificate of Analysis per batch</td><td><span class="cx">✗ Rarely provided</span></td><td><span class="ck">✓ Available before purchase</span></td></tr>
+          <tr><td>Tighter trace metal limits (VDA)</td><td><span class="cm">Basic IS 16282 only</span></td><td><span class="ck">✓ German standard applied</span></td></tr>
+          <tr><td>MSDS / SDS with every delivery</td><td><span class="cm">Inconsistent</span></td><td><span class="ck">✓ Standard inclusion</span></td></tr>
+          <tr><td>Named account contact</td><td><span class="cx">✗ Generic support</span></td><td><span class="ck">✓ Direct access</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ey">Standards & Certifications</div>
+      <h2 class="sh">What the credentials mean.</h2>
+      <p class="sb">The certifications Arkelon product meets — and what each one actually governs.</p>
+      <div class="cert-g">
+        <div class="cert-c">
+          <div class="cert-ico">🇩🇪</div>
+          <div class="cert-n">German Licence (VDA)</div>
+          <div class="cert-d">Governs the AdBlue® trademark. Sets the world's strictest purity thresholds for urea solution — particularly on trace metals that damage injectors and catalysts. Tighter than IS 16282 on copper and zinc limits.</div>
+        </div>
+        <div class="cert-c">
+          <div class="cert-ico">🌐</div>
+          <div class="cert-n">ISO 22241</div>
+          <div class="cert-d">The international AUS 32 standard. Four parts: product specification, test methods, handling and transport, in-field testing. Required by all major OEMs globally for SCR warranty compliance.</div>
+        </div>
+        <div class="cert-c">
+          <div class="cert-ico">🇮🇳</div>
+          <div class="cert-n">IS 16282 (BIS)</div>
+          <div class="cert-d">India's Bureau of Indian Standards equivalent of ISO 22241. Mandatory for DEF sold in India under BS6 norms. Governs concentration, pH, density, and impurity thresholds.</div>
+        </div>
+        <div class="cert-c">
+          <div class="cert-ico">📋</div>
+          <div class="cert-n">Certificate of Analysis</div>
+          <div class="cert-d">A batch-specific lab report tying a lot number to actual test results. The only way to verify that the product you received matches the standard it claims to meet. Arkelon makes this available on request, per batch, before purchase.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="wrap">
+      <h2>See the specifications.</h2>
+      <p>Review the full product data sheet and request a Certificate of Analysis before making any decision.</p>
+      <div class="cta-btns">
+        <button class="btn btn-p" onclick="go('product')">View Full Product Specs →</button>
+        <button class="btn btn-g" onclick="go('home');setTimeout(()=>document.getElementById('order-sec').scrollIntoView({behavior:'smooth'}),200)">Request a Quote</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /why -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PRODUCT
+══════════════════════════════════════════════════════════════ -->
+<div class="pg" id="pg-product">
+
+  <div class="banner">
+    <div class="wrap">
+      <div class="bc">Arkelon <em>/ Product</em></div>
+      <h1>Arkelon <em>AUS 32.</em></h1>
+      <p>ISO 22241 and IS 16282 compliant. German-licensed formulation. Full technical documentation available on request.</p>
+    </div>
+  </div>
+
+  <div class="prod-hero-img">
+    <div class="img-slot">
+      IMAGE REQUIRED
+      <span>Product in context: Arkelon-branded IBC tote or drum in a warehouse setting, OR a professional flat-lay of the product range (5L, 20L, drum). Clean, well-lit, brand-consistent.</span>
+    </div>
+  </div>
+
+  <!-- PRODUCT + SPEC -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ey">Product Overview</div>
+      <h2 class="sh">Arkelon AUS 32</h2>
+      <div class="prod-2col">
+        <div class="prod-txt">
+          <p>AUS 32 — Aqueous Urea Solution at 32.5% concentration — is the internationally standardised formulation required by all SCR systems in BS6 diesel vehicles. The concentration is not approximate. ISO 22241 specifies 32.5% ± 0.7% precisely because the SCR reduction reaction is concentration-sensitive: below 31.8%, NOx conversion is incomplete; above 33.2%, excess ammonia triggers catalyst degradation.</p>
+          <p>Arkelon AUS 32 is produced under a <strong>German licence</strong>, applying VDA-grade trace metal thresholds that go beyond IS 16282 minimum requirements. The product is manufactured at the same facility supplying India's leading automotive OEMs — meaning the production process, equipment, and QC protocols are maintained at OEM qualification standard.</p>
+          <div class="hl">Every batch is assigned a lot number and accompanied by a Certificate of Analysis. Available on request before purchase.</div>
+          <p>The product is available in six pack formats to suit every fleet size and application — from workshop top-up to bulk depot filling.</p>
+          <div class="btns" style="margin-top:20px">
+            <button class="btn btn-p" onclick="go('home');setTimeout(()=>document.getElementById('order-sec').scrollIntoView({behavior:'smooth'}),200)">Request a Quote</button>
+            <button class="btn btn-g">Download TDS</button>
+          </div>
+        </div>
+        <div class="spec-full">
+          <div class="spec-full-hd">
+            <span class="sf-t">Full Specification</span>
+            <span class="de">🇩🇪 German Licensed</span>
+          </div>
+          <div class="spec-row"><span class="p">Urea concentration</span><span class="v t">32.5% ± 0.7%</span></div>
+          <div class="spec-row"><span class="p">Standard</span><span class="v">ISO 22241 / IS 16282</span></div>
+          <div class="spec-row"><span class="p">Base fluid</span><span class="v">Deionised water</span></div>
+          <div class="spec-row"><span class="p">pH at 20°C</span><span class="v">9.0 – 9.5</span></div>
+          <div class="spec-row"><span class="p">Density at 20°C</span><span class="v">1.087 – 1.093 g/cm³</span></div>
+          <div class="spec-row"><span class="p">Refractive index (20°C)</span><span class="v">1.3814 – 1.3843</span></div>
+          <div class="spec-row"><span class="p">Biuret content</span><span class="v">≤ 0.3%</span></div>
+          <div class="spec-row"><span class="p">Aldehyde content</span><span class="v">≤ 5 mg/kg</span></div>
+          <div class="spec-row"><span class="p">Copper (Cu)</span><span class="v t">≤ 0.2 mg/kg</span></div>
+          <div class="spec-row"><span class="p">Zinc (Zn)</span><span class="v t">≤ 0.2 mg/kg</span></div>
+          <div class="spec-row"><span class="p">Iron (Fe)</span><span class="v">≤ 0.5 mg/kg</span></div>
+          <div class="spec-row"><span class="p">Shelf life (sealed)</span><span class="v">18 months</span></div>
+          <div class="spec-row"><span class="p">CoA per batch</span><span class="v t">On request</span></div>
+          <div class="spec-pf">
+            <div class="sp-lbl">Available pack sizes</div>
+            <div class="sp-pks">
+              <span class="sp-pk">5 L</span><span class="sp-pk">10 L</span><span class="sp-pk">20 L</span>
+              <span class="sp-pk">210 L Drum</span><span class="sp-pk">1000 L IBC</span><span class="sp-pk">Bulk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCR EXPLAINER -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="ey">How It Works</div>
+      <h2 class="sh">DEF and your SCR system.</h2>
+      <p class="sb">Understanding this process explains why concentration precision and purity are not optional — and why the quality of your DEF supplier has a direct impact on SCR system longevity.</p>
+      <div class="scr-flow">
+        <div class="scr-s"><div class="scr-ico">🔥</div><div class="scr-lbl">Combustion</div><div class="scr-d">Diesel engine produces exhaust gases containing NOx</div></div>
+        <div class="scr-s"><div class="scr-ico">💧</div><div class="scr-lbl">DEF Injection</div><div class="scr-d">AUS 32 injected into the exhaust stream upstream of the SCR catalyst</div></div>
+        <div class="scr-s"><div class="scr-ico">♨️</div><div class="scr-lbl">Decomposition</div><div class="scr-d">Heat converts urea into ammonia (NH₃) — requires precise concentration</div></div>
+        <div class="scr-s"><div class="scr-ico">⚗️</div><div class="scr-lbl">SCR Reaction</div><div class="scr-d">NH₃ reacts with NOx inside the catalyst — sensitive to trace metal contamination</div></div>
+        <div class="scr-s"><div class="scr-ico">🌿</div><div class="scr-lbl">Clean Exhaust</div><div class="scr-d">NOx converted to harmless N₂ and water vapour (H₂O)</div></div>
+      </div>
+      <div style="margin-top:24px;background:var(--c);border:0.5px solid var(--b1);border-left:2px solid var(--teal);border-radius:0 5px 5px 0;padding:14px 18px;font-size:12px;color:var(--muted);line-height:1.7">
+        <strong style="color:var(--teal);display:block;margin-bottom:3px">Why concentration tolerance matters</strong>
+        Below 31.8% urea: incomplete NOx reduction, sensor faults. Above 33.2%: excess ammonia, catalyst degradation, ECU warnings. The ±0.7% tolerance in ISO 22241 is tight. Maintaining it consistently requires manufacturing precision that commodity traders do not achieve.
+      </div>
+    </div>
+  </section>
+
+  <!-- STORAGE -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ey">Storage & Handling</div>
+      <h2 class="sh">Protecting product quality.</h2>
+      <p class="sb">DEF is stable and safe under correct conditions. Poor storage degrades quality before it reaches the vehicle.</p>
+      <div class="stor-g">
+        <div class="stor-c"><div class="stor-ico">🌡️</div><div class="stor-t">Temperature</div><div class="stor-d">Store between −5°C and +25°C. Freezes at −11°C — thaws back to specification. Degrades above 30°C with prolonged exposure. Keep out of direct sunlight.</div></div>
+        <div class="stor-c"><div class="stor-ico">🔒</div><div class="stor-t">Keep Sealed</div><div class="stor-d">DEF absorbs CO₂ from air, raising acidity over time. Keep containers sealed when not dispensing. Reseal completely after use.</div></div>
+        <div class="stor-c"><div class="stor-ico">🚫</div><div class="stor-t">No Metal Containers</div><div class="stor-d">Never store in iron, copper, or zinc-alloy containers. DEF leaches trace metals from these surfaces and becomes non-compliant. Use HDPE, stainless steel, or approved plastics only.</div></div>
+        <div class="stor-c"><div class="stor-ico">📦</div><div class="stor-t">Dedicated Equipment</div><div class="stor-d">Use dedicated dispensing equipment. Even trace contamination from diesel or coolant will degrade the product. Never share a pump across fluids.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCS -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="ey">Documentation</div>
+      <h2 class="sh">Everything in writing.</h2>
+      <p class="sb">All documents available on request. For first-time buyers, we recommend reviewing the TDS and requesting a CoA before placing an order.</p>
+      <div class="doc-g">
+        <div class="doc-c"><div class="doc-ico">📄</div><div class="doc-t">Technical Data Sheet</div><div class="doc-d">Full specifications, physical properties, compliance references, and applicable standards.</div><div class="doc-l">Request TDS →</div></div>
+        <div class="doc-c"><div class="doc-ico">🧾</div><div class="doc-t">Certificate of Analysis</div><div class="doc-d">Batch-specific lab results tied to a lot number and production date. Available before purchase.</div><div class="doc-l">Request CoA →</div></div>
+        <div class="doc-c"><div class="doc-ico">⚠️</div><div class="doc-t">Safety Data Sheet</div><div class="doc-d">Handling, storage, spill response, and PPE requirements. Included with every delivery.</div><div class="doc-l">Download SDS →</div></div>
+        <div class="doc-c"><div class="doc-ico">📘</div><div class="doc-t">Fleet Manager's Guide</div><div class="doc-d">Plain-language overview of DEF: what it is, why quality matters, how to set up storage correctly.</div><div class="doc-l">Download Guide →</div></div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /product -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     INDUSTRIES
+══════════════════════════════════════════════════════════════ -->
+<div class="pg" id="pg-industries">
+
+  <div class="banner">
+    <div class="wrap">
+      <div class="bc">Arkelon <em>/ Industries</em></div>
+      <h1>Every BS6 diesel<br>vehicle <em>needs this.</em></h1>
+      <p>BS6 norms made SCR systems mandatory across India's commercial and passenger diesel fleet. DEF is now a fixed operational consumable. Arkelon supplies every sector that runs BS6 diesel.</p>
+    </div>
+  </div>
+
+  <div class="ind-banner-img">
+    <div class="img-slot">
+      IMAGE REQUIRED
+      <span>Wide aerial or ground shot showing scale: a large logistics depot, a construction site with heavy equipment, OR a busy commercial truck yard. Should convey the scale of India's diesel fleet.</span>
+    </div>
+  </div>
+
+  <!-- INDUSTRY CARDS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ey">Sectors We Serve</div>
+      <h2 class="sh">Who we supply.</h2>
+      <p class="sb">Each sector has different volume patterns, pack preferences, and documentation requirements. Arkelon adapts to fit your operation.</p>
+      <div class="ind-cards">
+
+        <div class="ic">
+          <div class="ic-img">
+            <div class="img-slot">
+              IMAGE
+              <span>BS6 truck / logistics fleet on highway or at depot</span>
+            </div>
+          </div>
+          <div class="ic-body">
+            <div class="ic-t">Commercial Trucking & Logistics</div>
+            <div class="ic-d">The largest DEF consuming segment in India. BS6 trucks consume DEF at approximately 4–6% of diesel volume — roughly 300–400 litres per vehicle per year at typical commercial mileage. Fleet operators require reliable supply in bulk or IBC format, competitive pricing on volume, and documentation for compliance records. Supply interruptions are not operationally acceptable.</div>
+            <div class="ic-tags"><span class="ic-tag">IBC / Bulk</span><span class="ic-tag">Supply contracts</span><span class="ic-tag">CoA required</span></div>
+          </div>
+        </div>
+
+        <div class="ic">
+          <div class="ic-img">
+            <div class="img-slot">
+              IMAGE
+              <span>Bus fleet at depot, or passenger coach on highway</span>
+            </div>
+          </div>
+          <div class="ic-body">
+            <div class="ic-t">Bus & Passenger Transport</div>
+            <div class="ic-d">State transport corporations and private intercity operators run high-mileage, high-frequency fleets with predictable DEF consumption — making them well-suited to standing supply agreements. Documentation standards for government operators often require certified, traceable product. Private operators prioritise quality-verified supply at volume pricing.</div>
+            <div class="ic-tags"><span class="ic-tag">Bulk & Drums</span><span class="ic-tag">Standing agreements</span><span class="ic-tag">Government compliance</span></div>
+          </div>
+        </div>
+
+        <div class="ic">
+          <div class="ic-img">
+            <div class="img-slot">
+              IMAGE
+              <span>Construction equipment — excavator, loader — on a site</span>
+            </div>
+          </div>
+          <div class="ic-body">
+            <div class="ic-t">Construction, Mining & Infrastructure</div>
+            <div class="ic-d">Off-road equipment running BS6 Trem IV engines — excavators, loaders, dumpers, gensets — require DEF. Sites are often remote, making supply reliability critical. SCR damage from substandard DEF has outsized financial consequences on high-value equipment. Pack sizes of 20L and 210L drums are standard for site storage.</div>
+            <div class="ic-tags"><span class="ic-tag">20L / 210L Drums</span><span class="ic-tag">Site delivery</span><span class="ic-tag">Equipment-grade quality</span></div>
+          </div>
+        </div>
+
+        <div class="ic">
+          <div class="ic-img">
+            <div class="img-slot">
+              IMAGE
+              <span>Automotive dealership service bay, or service technician with vehicle</span>
+            </div>
+          </div>
+          <div class="ic-body">
+            <div class="ic-t">Automotive Dealerships</div>
+            <div class="ic-d">Every BS6 diesel vehicle sold requires DEF at service. Dealerships need a certified supplier they can present during OEM principal audits. Using non-IS 16282 compliant DEF in an OEM service network creates franchise risk. German-licensed, ISO-compliant product is the minimum standard OEMs expect from their authorised service networks.</div>
+            <div class="ic-tags"><span class="ic-tag">5L / 10L / 20L</span><span class="ic-tag">OEM audit ready</span><span class="ic-tag">Full documentation</span></div>
+          </div>
+        </div>
+
+        <div class="ic">
+          <div class="ic-img">
+            <div class="img-slot">
+              IMAGE
+              <span>Workshop or service centre setting — tools, vehicles, technicians at work</span>
+            </div>
+          </div>
+          <div class="ic-body">
+            <div class="ic-t">Independent Vehicle Service Centres</div>
+            <div class="ic-d">Multi-brand service centres and independent workshops need DEF as a standard service item. The priority is ease of reordering, small pack availability, and documentation to share with customers on request. Arkelon supplies 5L and 10L packs designed for workshop dispensing with full labelling and batch traceability.</div>
+            <div class="ic-tags"><span class="ic-tag">5L / 10L</span><span class="ic-tag">Quick reorder</span><span class="ic-tag">Customer documentation</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BS6 MANDATE -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="ey">The Regulatory Backdrop</div>
+      <h2 class="sh">Demand that is structural.</h2>
+      <div class="mandate-2">
+        <div class="mtxt">
+          <p>DEF demand in India is driven by regulation, not trend. BS6 emission norms — effective April 2020 — made SCR systems mandatory on all new diesel commercial vehicles. Every BS6 truck, bus, and heavy equipment unit sold since then requires DEF as a fixed operational consumable.</p>
+          <p>Running an SCR-equipped vehicle without DEF triggers an ECU-enforced engine derate — the vehicle loses power and speed until the tank is replenished. In commercial operations, that means delivery failures and revenue loss. DEF procurement is not discretionary.</p>
+          <p>India's commercial vehicle fleet is large and growing. The transition from BS4 to BS6 continues to add SCR-equipped vehicles to the installed base each year. <strong>DEF consumption compounds as the fleet grows.</strong></p>
+        </div>
+        <div class="tl">
+          <div class="tl-i"><div class="tl-l"><div class="tl-dot"></div><div class="tl-ln"></div></div><div><div class="tl-yr">2016</div><div class="tl-ev">Government announces <strong>direct leap from BS4 to BS6</strong> — skipping BS5. April 2020 deadline set.</div></div></div>
+          <div class="tl-i"><div class="tl-l"><div class="tl-dot"></div><div class="tl-ln"></div></div><div><div class="tl-yr">Apr 2020</div><div class="tl-ev"><strong>BS6 Phase I mandatory.</strong> SCR systems and DEF requirement standard on all new diesel commercial vehicles.</div></div></div>
+          <div class="tl-i"><div class="tl-l"><div class="tl-dot"></div><div class="tl-ln"></div></div><div><div class="tl-yr">2023</div><div class="tl-ev"><strong>BS6 Phase II (OBD2).</strong> On-board diagnostics enforce DEF quality and presence more rigorously — increasing the cost of using off-spec product.</div></div></div>
+          <div class="tl-i"><div class="tl-l"><div class="tl-dot"></div><div class="tl-ln"></div></div><div><div class="tl-yr">Ongoing</div><div class="tl-ev">BS6 fleet grows as BS4 vehicles are retired. <strong>DEF demand increases year on year</strong> as installed SCR fleet expands.</div></div></div>
+          <div class="tl-i"><div class="tl-l"><div class="tl-dot"></div></div><div><div class="tl-yr">Future</div><div class="tl-ev">Potential BS7 alignment will maintain SCR + DEF as the core NOx control technology for diesel.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPORT -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ey">Export Markets</div>
+      <h2 class="sh">Beyond India.</h2>
+      <p class="sb">Arkelon's ISO 22241 and German-licensed credentials meet import requirements for all target markets.</p>
+      <div class="exp-g">
+        <div class="exp-c"><div class="exp-fl">🇮🇳</div><div class="exp-cn">India (Domestic)</div><span class="st st-a">Active</span><div class="exp-d">Primary market. IS 16282 and ISO 22241 compliant. Full documentation pack included with every delivery.</div></div>
+        <div class="exp-c"><div class="exp-fl">🇱🇰</div><div class="exp-cn">Sri Lanka</div><span class="st st-p">In Development</span><div class="exp-d">Growing commercial vehicle market. ISO 22241 compliant product meets import requirements. DGFT export documentation in preparation.</div></div>
+        <div class="exp-c"><div class="exp-fl">🇦🇪</div><div class="exp-cn">UAE / Gulf (GCC)</div><span class="st st-p">In Development</span><div class="exp-d">Large commercial diesel fleet. German-licensed credentials meet GCC import standards. CoA, MSDS, and ISO certification documentation available.</div></div>
+        <div class="exp-c"><div class="exp-fl">🌍</div><div class="exp-cn">Other Markets</div><span class="st st-p">Enquire</span><div class="exp-d">Our ISO 22241 and German-licensed credentials satisfy requirements in most jurisdictions. Contact us to discuss.</div></div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /industries -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════════════════════════ -->
+<div class="pg" id="pg-about">
+
+  <div class="banner">
+    <div class="wrap">
+      <div class="bc">Arkelon <em>/ About Us</em></div>
+      <h1>Built around<br><em>one standard.</em></h1>
+      <p>Arkelon was established to bring OEM-grade DEF quality to India's commercial fleet market — with full traceability, direct accountability, and no compromise on specification.</p>
+    </div>
+  </div>
+
+  <!-- ABOUT STORY -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ey">About Arkelon</div>
+      <h2 class="sh">The company.</h2>
+      <div class="about-2">
+        <div class="abt-body">
+          <p>Arkelon operates as a specialist DEF supplier, sourcing exclusively from a <strong>German-licensed, OEM-qualified manufacturer</strong> — the same facility that produces DEF for India's leading automotive brands. This supply relationship is the foundation of our quality guarantee: the product reaching your fleet meets the same manufacturing standard as OEM-branded DEF.</p>
+          <p>The company was established with a clear mandate: provide India's commercial fleet operators access to genuinely certified DEF — with documentation that proves it, not just labels that claim it. Every Arkelon delivery includes a Certificate of Analysis tied to the specific batch supplied. The CoA is available before purchase, so procurement teams can verify specification before committing to an order.</p>
+          <p>Arkelon's portfolio is currently focused on its primary German-licensed product. Additional brands and SKUs are being onboarded. Export supply to Sri Lanka and Gulf markets is in active development.</p>
+          <div style="margin-top:20px;background:var(--c-mid);border:0.5px solid var(--b1);border-radius:6px;padding:18px 20px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--white);letter-spacing:.02em;margin-bottom:2px">PURE PERFORMANCE.</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--teal);letter-spacing:.02em;margin-bottom:10px">CLEANER TOMORROW.</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.65">Performance: your SCR system protected, your fleet operating at specification.<br>Cleaner: because the NOx conversion actually happened.</p>
+          </div>
+        </div>
+        <div>
+          <div class="founder-img-wrap">
+            <div class="img-slot" style="height:260px">
+              IMAGE REQUIRED
+              <span>Professional founder/director photograph. Good natural light, plain or office background. A real photo here is non-negotiable for B2B credibility — procurement managers want to know there is a named individual behind the company.</span>
+            </div>
+          </div>
+          <div style="background:var(--c-mid);border:0.5px solid var(--b0);border-radius:6px;padding:18px 20px">
+            <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:2px">[Founder Name]</div>
+            <div style="font-size:12px;color:var(--teal);margin-bottom:10px">Founder & Managing Director</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.7">Deep operational understanding of DEF manufacturing — from raw material sourcing through laboratory QC — underpins Arkelon's sourcing decisions. The choice to work exclusively with a German-licensed, OEM-qualified manufacturer was made with direct knowledge of what the quality difference means at the SCR system level.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="ey">Operating Principles</div>
+      <h2 class="sh">How we operate.</h2>
+      <div class="vals-g">
+        <div class="val-c"><div class="val-ico">🔬</div><div class="val-t">Verifiable over declarative</div><div class="val-d">Every quality claim Arkelon makes is backed by documentation you can request and check. The Certificate of Analysis is not supplementary — it is standard.</div></div>
+        <div class="val-c"><div class="val-ico">🎯</div><div class="val-t">Precision as a baseline</div><div class="val-d">DEF is a precision product. 32.5% concentration is not a target range. It is a specification that requires manufacturing discipline to hit consistently. We do not treat it as approximate.</div></div>
+        <div class="val-c"><div class="val-ico">🤝</div><div class="val-t">Direct accountability</div><div class="val-d">Every customer has a named contact responsible for their account. No support tiers. No distributor buffer. If there is a concern, it reaches the person who can resolve it.</div></div>
+        <div class="val-c"><div class="val-ico">📈</div><div class="val-t">Supply reliability</div><div class="val-d">Our business depends on repeat supply relationships. That means consistent availability, predictable lead times, and the documentation your procurement team needs without having to chase it.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ey">Strategic Direction</div>
+      <h2 class="sh">Where Arkelon is going.</h2>
+      <p class="sb">A clear, phased plan — from specialist domestic supplier to full-portfolio DEF solutions provider.</p>
+      <div class="road-g">
+        <div class="road-ph now">
+          <div class="road-lb">Current Focus</div>
+          <div class="road-pr">Domestic Supply</div>
+          <ul class="road-li">
+            <li><strong>German-licensed AUS 32</strong> — single product, premium quality, full documentation</li>
+            <li>Build supply relationships with logistics, fleet, dealership, and construction sectors</li>
+            <li>Complete regulatory registrations — GST, BIS IS 16282, IEC</li>
+            <li>Establish reputation for documentation discipline and supply reliability</li>
+          </ul>
+        </div>
+        <div class="road-ph">
+          <div class="road-lb">Near Term</div>
+          <div class="road-pr">Multi-Brand & Exports</div>
+          <ul class="road-li">
+            <li>Onboard <strong>additional certified DEF brands</strong> to broaden product portfolio</li>
+            <li>First export consignments to <strong>Sri Lanka</strong></li>
+            <li>Qualify Gulf (UAE / Oman) import documentation and distributor relationships</li>
+            <li>Formalise standing supply agreements with anchor fleet customers</li>
+          </ul>
+        </div>
+        <div class="road-ph">
+          <div class="road-lb">Long Term</div>
+          <div class="road-pr">Manufacturing</div>
+          <ul class="road-li">
+            <li>Evaluate <strong>own manufacturing</strong> as volume justifies capital investment</li>
+            <li>Pursue VDA AdBlue® licence for own-brand production</li>
+            <li>Expand to full DEF solutions: dispensing equipment and bulk storage systems</li>
+            <li>Position Arkelon as a full-service DEF partner across India and export markets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="ey">In Numbers</div>
+      <h2 class="sh">The product behind the company.</h2>
+      <div class="stats-g">
+        <div class="stat-b"><div class="stat-v">32.5%</div><div class="stat-l">Exact urea concentration — the only correct level for AUS 32</div></div>
+        <div class="stat-b"><div class="stat-v">ISO 22241</div><div class="stat-l">International standard — 4 parts governing specification, testing, and handling</div></div>
+        <div class="stat-b"><div class="stat-v">18mo</div><div class="stat-l">Shelf life in sealed storage — every batch date-stamped with lot number</div></div>
+        <div class="stat-b"><div class="stat-v">≤0.2<br>mg/kg</div><div class="stat-l">German-standard limit for Cu and Zn — tighter than IS 16282 minimum</div></div>
+        <div class="stat-b"><div class="stat-v">24hr</div><div class="stat-l">Quote and CoA response target from first enquiry</div></div>
+        <div class="stat-b"><div class="stat-v">6</div><div class="stat-l">Pack formats: 5L through bulk IBC, for every fleet size and application</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="wrap">
+      <h2>Start with a conversation.</h2>
+      <p>Tell us your fleet size and current DEF supplier. We'll share what we can deliver — and the documentation to back it.</p>
+      <div class="cta-btns">
+        <button class="btn btn-p" onclick="go('home');setTimeout(()=>document.getElementById('order-sec').scrollIntoView({behavior:'smooth'}),200)">Get a Quote →</button>
+        <button class="btn btn-g" onclick="go('product')">View Product Specs</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /about -->
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <div class="fl">ARKEL<span class="on">ON</span><span class="df">DEF</span></div>
+        <p class="ft-tg">Pure Performance. Cleaner Tomorrow.<br>German-licensed DEF. Supplied across India.</p>
+      </div>
+      <div>
+        <div class="fc-t">Pages</div>
+        <ul class="fc-l">
+          <li><button onclick="go('home')">Home</button></li>
+          <li><button onclick="go('why')">Why Arkelon</button></li>
+          <li><button onclick="go('product')">Product</button></li>
+          <li><button onclick="go('industries')">Industries</button></li>
+          <li><button onclick="go('about')">About Us</button></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fc-t">Legal & Compliance</div>
+        <ul class="fc-l">
+          <li><button>IS 16282 (BIS)</button></li>
+          <li><button>ISO 22241</button></li>
+          <li><button>Privacy Policy</button></li>
+          <li><button>Terms of Sale</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fb">
+      <div class="fm">Arkelon · GSTIN: [Your GSTIN] · CIN: [Your CIN] · IS 16282 Certified<br>© 2025 Arkelon. All rights reserved.</div>
+      <div class="flg">Privacy · Terms · Contact</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function go(id){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nav-menu button').forEach(b=>b.classList.remove('cur'));
+  document.getElementById('pg-'+id).classList.add('on');
+  var nb=document.getElementById('nb-'+id);
+  if(nb) nb.classList.add('cur');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+go('home');
+</script>
+</body>
+</html>

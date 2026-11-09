@@ -1,0 +1,37 @@
+.mySwiper {
+  width: 100%;
+  padding: 20px 0 44px;
+}
+
+.mySwiper .swiper-slide {
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 1px solid #eee;
+}
+
+.mySwiper .serve-card {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mySwiper .serve-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+  background: var(--primary);
+}

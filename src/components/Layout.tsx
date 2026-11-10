@@ -74,7 +74,7 @@ export default function Layout() {
 
           <div className="header-actions">
             <Link to="/contact" className="btn btn-primary btn-sm header-cta">
-              Get In Touch <ArrowRight size={16} aria-hidden="true" />
+              Talk to Our Team <ArrowRight size={16} aria-hidden="true" />
             </Link>
             <button
               type="button"

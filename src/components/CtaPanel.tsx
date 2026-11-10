@@ -13,7 +13,7 @@ export default function CtaPanel() {
             </p>
           </div>
           <Link to="/contact" className="btn btn-primary btn-lg">
-            Get In Touch <ArrowRight size={18} aria-hidden="true" />
+            Talk to Our Team <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>
       </div>

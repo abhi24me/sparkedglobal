@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, BrainCircuit, Building2, Cloud, CloudUpload, CodeXml, Database, Server, ShieldCheck, Workflow } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, BrainCircuit, Building2, CloudUpload, ShieldCheck, Workflow } from 'lucide-react'
 // import { Swiper, SwiperSlide } from 'swiper/react'
 // import { Autoplay, Pagination } from 'swiper/modules'
 // import 'swiper/css'
@@ -8,7 +8,7 @@ import { ArrowRight, ArrowUpRight, BrainCircuit, Building2, Cloud, CloudUpload, 
 import SectionHeading from '../components/SectionHeading'
 import CtaPanel from '../components/CtaPanel'
 import LogoMark from '../components/LogoMark'
-import { featuredServices } from '../data/services'
+import { featuredServices, services } from '../data/services'
 
 const reasons = [
   { title: 'Skilled Technology Professionals', text: 'Experienced engineers, architects, and consultants across the modern technology stack.' },
@@ -26,49 +26,38 @@ const solutions = [
   { icon: ShieldCheck, title: 'Cybersecurity & Risk Protection', text: 'Protect systems, data, and users with layered security and proactive oversight.' },
 ]
 
-// Six capability nodes evenly spaced on a circle (percent coordinates) around the hub
-const hubNodes = [CodeXml, Cloud, Server, ShieldCheck, BrainCircuit, Database].map((icon, i) => {
-  const angle = ((-90 + i * 60) * Math.PI) / 180
-  return { icon, x: +(50 + 38 * Math.cos(angle)).toFixed(2), y: +(50 + 38 * Math.sin(angle)).toFixed(2) }
-})
-
 export default function Home() {
   return (
     <>
       <section className="hero" id="hero">
+        <LogoMark className="hero-sunrise" ringWidth={4} />
         <div className="container hero-inner">
-          <div className="hero-copy">
-            <p className="hero-badge"><span className="dot" aria-hidden="true" /> Trusted digital partner</p>
-            <h1>Smart IT Solutions <span className="accent">for a Digital Future</span></h1>
-            <p className="hero-sub">
-              Sparked Global helps businesses design, build, secure, and scale modern digital systems through smart software, cloud platforms, automation, and long-term IT support.
-            </p>
-            <div className="hero-actions">
-              <Link to="/product" className="btn btn-primary btn-lg">
-                Explore Solutions <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-              <Link to="/contact" className="btn btn-ghost-light btn-lg">Get In Touch</Link>
-            </div>
+          <p className="hero-kicker">
+            <LogoMark className="hero-kicker-mark" ringWidth={40} />
+            Trusted digital partner
+          </p>
+          <h1>Smart IT Solutions <span className="accent">for a Digital Future</span></h1>
+          <p className="hero-sub">
+            Sparked Global helps businesses design, build, secure, and scale modern digital systems through smart software, cloud platforms, automation, and long-term IT support.
+          </p>
+          <div className="hero-actions">
+            <Link to="/product" className="btn btn-navy btn-lg">
+              See How We Help <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+            <Link to="/contact" className="btn btn-outline btn-lg">Talk to Our Team</Link>
           </div>
+        </div>
 
-          <div className="hero-visual" aria-hidden="true">
-            <div className="hub">
-              <svg className="hub-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <circle className="hub-orbit" cx="50" cy="50" r="38" />
-                <circle className="hub-ring" cx="50" cy="50" r="22" />
-                {hubNodes.map(({ x, y }, i) => (
-                  <line key={i} x1="50" y1="50" x2={x} y2={y} />
+        {/* Continuous strip of services; second copy makes the loop seamless */}
+        <div className="ticker" aria-label="Our services">
+          <div className="ticker-track">
+            {[0, 1].map((copy) => (
+              <ul className="ticker-list" key={copy} aria-hidden={copy === 1 ? true : undefined}>
+                {services.map(({ title, icon: Icon }) => (
+                  <li key={title}><Icon size={18} aria-hidden="true" /> {title}</li>
                 ))}
-              </svg>
-              <div className="hub-core">
-                <LogoMark color="#fff" ringWidth={22} />
-              </div>
-              {hubNodes.map(({ x, y, icon: Icon }, i) => (
-                <span className="hub-node" key={i} style={{ left: `${x}%`, top: `${y}%`, animationDelay: `${i * 0.4}s` }}>
-                  <Icon size={22} />
-                </span>
-              ))}
-            </div>
+              </ul>
+            ))}
           </div>
         </div>
       </section>

@@ -57,7 +57,7 @@ export default function Layout() {
       <header ref={headerRef} className={`site-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' is-open' : ''}`}>
         <div className="container header-inner">
           <Link to="/" className="brand" aria-label="Sparked Global home">
-            <Logo variant="light" size={42} />
+            <Logo variant="dark" size={40} />
           </Link>
 
           <nav id="primary-nav" className="primary-nav" aria-label="Primary">
@@ -73,7 +73,7 @@ export default function Layout() {
           </nav>
 
           <div className="header-actions">
-            <Link to="/contact" className="btn btn-dark btn-sm header-cta">
+            <Link to="/contact" className="btn btn-primary btn-sm header-cta">
               Get In Touch <ArrowRight size={16} aria-hidden="true" />
             </Link>
             <button
@@ -104,7 +104,7 @@ export default function Layout() {
           <div className="footer-grid">
             <div className="footer-brand">
               <Link to="/" aria-label="Sparked Global home">
-                <Logo variant="dark" size={44} />
+                <Logo variant="dark" size={42} />
               </Link>
               <p>
                 Sparked Global delivers modern software, infrastructure, and digital transformation solutions built for secure growth and long-term business performance.

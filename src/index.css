@@ -8,7 +8,8 @@
 
   /* Ink & neutrals */
   --ink: #0f1e36;
-  --ink-deep: #0a1426;
+  --ink-deep: #071e40;   /* brand navy, from the logo artwork */
+  --nav-bg: #071e40;
   --text: #334155;
   --text-muted: #5b6b80;
   --line: #e2e8f0;
